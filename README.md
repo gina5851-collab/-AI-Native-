@@ -1,4 +1,4 @@
-# Builder Josh · Gemini로 만드는 3D 인터랙티브 랜딩 페이지
+# Ginas · Gemini로 만드는 3D 인터랙티브 랜딩 페이지
 
 유튜브 대본을 바탕으로 만든 **3D 인터랙티브 랜딩 페이지 데모**입니다.
 Spline · Pinterest · Google AI Studio(Gemini) 세 가지 도구로 3D 웹을 만드는
@@ -47,4 +47,4 @@ python3 -m http.server 8000
 
 ## 출처
 
-빌더 조시(Builder Josh) 채널 영상 대본 기반 데모. Made with ❤️
+Ginas · Gemini · Spline · Pinterest로 만든 3D 웹 데모. Made with ❤️
