@@ -15,31 +15,30 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-// Spline embed: if a public scene URL is provided, swap the CSS orb for the real 3D.
+// Spline 3D: 로봇 씬이 로드되면 CSS 오브 폴백을 숨기고 실제 3D를 보여준다.
 (function initSpline() {
   const visual = document.getElementById('heroVisual');
-  const frame = document.getElementById('splineFrame');
-  const fallbackOrb = document.getElementById('orb');
+  const viewer = document.getElementById('splineViewer');
   const hint = document.querySelector('.orb-hint');
-  if (!visual || !frame) return;
+  if (!visual || !viewer) return;
 
-  const url = (visual.getAttribute('data-spline-url') || '').trim();
-  if (!url) return; // no URL → keep the CSS orb fallback
+  const reveal = () => {
+    viewer.classList.add('ready');
+    visual.classList.add('spline-ready');
+    if (hint) hint.textContent = '로봇이 마우스를 따라옵니다 ↗';
+  };
 
-  const iframe = document.createElement('iframe');
-  iframe.src = url;
-  iframe.title = 'Spline 3D scene';
-  iframe.loading = 'lazy';
-  iframe.setAttribute('frameborder', '0');
-  iframe.allow = 'autoplay; fullscreen; xr-spatial-tracking';
+  // spline-viewer가 씬 로드를 마치면 'load' 이벤트 발생
+  viewer.addEventListener('load', reveal, { once: true });
 
-  iframe.addEventListener('load', () => {
-    frame.hidden = false;
-    if (fallbackOrb) fallbackOrb.style.display = 'none';
-    if (hint) hint.textContent = '마우스를 움직여 3D를 살펴보세요 ↗';
-  });
-
-  frame.appendChild(iframe);
+  // 안전장치: 일정 시간 안에 load가 안 오면(스크립트/씬 차단 등) 폴백 오브 유지.
+  // 단, 커스텀 엘리먼트가 이미 정의돼 캔버스가 떴는데 이벤트만 놓친 경우를 대비해 한 번 더 확인.
+  setTimeout(() => {
+    if (!visual.classList.contains('spline-ready') && viewer.shadowRoot &&
+        viewer.shadowRoot.querySelector('canvas')) {
+      reveal();
+    }
+  }, 6000);
 })();
 
 // Mouse-driven 3D tilt on the hero orb (Spline-like interaction)

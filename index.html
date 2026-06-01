@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <!-- Spline 3D viewer (실제 로봇 씬 렌더링용 웹 컴포넌트) -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
 </head>
 <body>
   <!-- Animated gradient backdrop -->
@@ -60,18 +62,21 @@
       </div>
 
       <!--
-        Spline 3D 임베드 영역.
-        Spline → Export → Public URL → Copy iframe(embed)에서 받은
-        본인 씬 URL을 아래 data-spline-url 값으로 교체하면 실제 3D가 표시됩니다.
-        URL이 비어 있으면 아래 CSS 오브(orb)가 폴백으로 표시됩니다.
+        Spline 3D 로봇 영역.
+        기본값은 Spline 공식 공개 씬(NEXBOT - 마우스를 따라다니는 로봇)입니다.
+        다른 로봇/장면으로 바꾸려면 아래 <spline-viewer>의 url 값만 교체하세요.
+        (Spline → Export → Public URL → scene.splinecode 주소)
+        스크립트/씬 로드 전이나 실패 시에는 아래 CSS 오브(orb)가 폴백으로 표시됩니다.
       -->
-      <div class="hero-visual" id="heroVisual"
-           data-spline-url=""
-           aria-hidden="true">
-        <!-- 실제 Spline 임베드가 들어갈 컨테이너 (JS가 채움) -->
-        <div class="spline-frame" id="splineFrame" hidden></div>
+      <div class="hero-visual" id="heroVisual" aria-hidden="true">
+        <!-- 실제 Spline 3D 로봇 -->
+        <spline-viewer
+          id="splineViewer"
+          class="spline-viewer"
+          loading-anim-type="none"
+          url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode"></spline-viewer>
 
-        <!-- 폴백: CSS로 만든 인터랙티브 3D 오브 -->
+        <!-- 폴백: CSS로 만든 인터랙티브 3D 오브 (Spline 로드되면 자동 숨김) -->
         <div class="orb" id="orb">
           <div class="orb-face">OPTIMUS</div>
           <div class="orb-ring"></div>
