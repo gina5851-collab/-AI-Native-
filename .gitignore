@@ -1,0 +1,3 @@
+# Build / deploy artifacts (Netlify Drop, local builds)
+dist/
+*.zip
