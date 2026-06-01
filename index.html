@@ -59,8 +59,19 @@
         </div>
       </div>
 
-      <!-- Floating 3D-ish robot orb -->
-      <div class="hero-visual" id="heroVisual" aria-hidden="true">
+      <!--
+        Spline 3D 임베드 영역.
+        Spline → Export → Public URL → Copy iframe(embed)에서 받은
+        본인 씬 URL을 아래 data-spline-url 값으로 교체하면 실제 3D가 표시됩니다.
+        URL이 비어 있으면 아래 CSS 오브(orb)가 폴백으로 표시됩니다.
+      -->
+      <div class="hero-visual" id="heroVisual"
+           data-spline-url=""
+           aria-hidden="true">
+        <!-- 실제 Spline 임베드가 들어갈 컨테이너 (JS가 채움) -->
+        <div class="spline-frame" id="splineFrame" hidden></div>
+
+        <!-- 폴백: CSS로 만든 인터랙티브 3D 오브 -->
         <div class="orb" id="orb">
           <div class="orb-face">OPTIMUS</div>
           <div class="orb-ring"></div>

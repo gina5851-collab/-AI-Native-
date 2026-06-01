@@ -15,6 +15,33 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+// Spline embed: if a public scene URL is provided, swap the CSS orb for the real 3D.
+(function initSpline() {
+  const visual = document.getElementById('heroVisual');
+  const frame = document.getElementById('splineFrame');
+  const fallbackOrb = document.getElementById('orb');
+  const hint = document.querySelector('.orb-hint');
+  if (!visual || !frame) return;
+
+  const url = (visual.getAttribute('data-spline-url') || '').trim();
+  if (!url) return; // no URL → keep the CSS orb fallback
+
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.title = 'Spline 3D scene';
+  iframe.loading = 'lazy';
+  iframe.setAttribute('frameborder', '0');
+  iframe.allow = 'autoplay; fullscreen; xr-spatial-tracking';
+
+  iframe.addEventListener('load', () => {
+    frame.hidden = false;
+    if (fallbackOrb) fallbackOrb.style.display = 'none';
+    if (hint) hint.textContent = '마우스를 움직여 3D를 살펴보세요 ↗';
+  });
+
+  frame.appendChild(iframe);
+})();
+
 // Mouse-driven 3D tilt on the hero orb (Spline-like interaction)
 const orb = document.getElementById('orb');
 const hero = document.getElementById('hero');
