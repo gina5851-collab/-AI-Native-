@@ -20,23 +20,15 @@ Spline · Pinterest · Google AI Studio(Gemini) 세 가지 도구로 3D 웹을 �
 - 🎨 **4가지 레퍼런스 쇼케이스** (옵티머스 · Vision OS · 크립토 · 네오브루탈리즘)
 - 📱 완전 반응형 + `prefers-reduced-motion` 접근성 대응
 
-## Spline 3D 로봇
+## 3D 로봇 (Three.js)
 
-히어로 섹션에는 **실제 Spline 3D 로봇**(공식 공개 씬 NEXBOT — 마우스를 따라다님)이
-`@splinetool/viewer` 웹 컴포넌트로 연결되어 있습니다. 씬이 로드되기 전이나
-로드에 실패하면 CSS로 만든 오브(orb)가 자동 폴백으로 표시됩니다.
+히어로 섹션의 3D 로봇은 `robot.js`에서 **Three.js로 직접 만든 실시간 3D 모델**입니다.
+외부 Spline 씬에 의존하지 않으므로 항상 렌더링되고 **마우스를 따라 고개를 돌립니다**.
+WebGL 미지원/스크립트 로드 실패 시에는 CSS 오브(orb)가 자동 폴백으로 표시됩니다.
 
-### 다른 로봇/장면으로 교체하기
-1. [Spline](https://spline.design) 커뮤니티에서 원하는 3D를 **Remix**
-2. **Export → Public URL** 에서 `scene.splinecode` 주소 복사
-3. `index.html`의 `<spline-viewer>` 의 `url` 값만 교체:
-
-```html
-<spline-viewer
-  url="https://prod.spline.design/내-씬-id/scene.splinecode"></spline-viewer>
-```
-
-> 기본 씬: `https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode`
+- Three.js는 jsDelivr CDN(`three@0.160.0`)에서 ES 모듈로 로드됩니다.
+- 색상·형태는 `robot.js`의 재질(`shell`/`dark`/`accent`/`eyeMat`)과 지오메트리에서 조정할 수 있습니다.
+- Spline 씬을 쓰고 싶다면 `robot-stage` 자리에 `<spline-viewer url="...scene.splinecode">`를 넣어 교체할 수도 있습니다.
 
 ## 실행
 

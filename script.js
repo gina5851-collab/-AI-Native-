@@ -15,33 +15,7 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-// Spline 3D: 로봇 씬이 로드되면 CSS 오브 폴백을 숨기고 실제 3D를 보여준다.
-(function initSpline() {
-  const visual = document.getElementById('heroVisual');
-  const viewer = document.getElementById('splineViewer');
-  const hint = document.querySelector('.orb-hint');
-  if (!visual || !viewer) return;
-
-  const reveal = () => {
-    viewer.classList.add('ready');
-    visual.classList.add('spline-ready');
-    if (hint) hint.textContent = '로봇이 마우스를 따라옵니다 ↗';
-  };
-
-  // spline-viewer가 씬 로드를 마치면 'load' 이벤트 발생
-  viewer.addEventListener('load', reveal, { once: true });
-
-  // 안전장치: 일정 시간 안에 load가 안 오면(스크립트/씬 차단 등) 폴백 오브 유지.
-  // 단, 커스텀 엘리먼트가 이미 정의돼 캔버스가 떴는데 이벤트만 놓친 경우를 대비해 한 번 더 확인.
-  setTimeout(() => {
-    if (!visual.classList.contains('spline-ready') && viewer.shadowRoot &&
-        viewer.shadowRoot.querySelector('canvas')) {
-      reveal();
-    }
-  }, 6000);
-})();
-
-// Mouse-driven 3D tilt on the hero orb (Spline-like interaction)
+// Mouse-driven 3D tilt on the hero orb (fallback visual)
 const orb = document.getElementById('orb');
 const hero = document.getElementById('hero');
 if (orb && hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
