@@ -1,3 +1,3 @@
-# Build / deploy artifacts (Netlify Drop, local builds)
+# 배포용 빌드 산출물 (커밋 불필요)
 dist/
 *.zip
