@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>빌더 조시 · Gemini로 만드는 3D 인터랙티브 랜딩 페이지</title>
+  <meta name="description" content="Spline · Pinterest · Google AI Studio(Gemini) 세 가지 도구만으로 인터랙티브한 3D 랜딩 페이지를 만드는 방법을 단계별로 안내합니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Animated gradient backdrop -->
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark">◣</span>
+      <span class="brand-text">Builder<b>Josh</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#tools">도구</a>
+      <a href="#steps">제작 과정</a>
+      <a href="#showcase">레퍼런스</a>
+      <a href="#tips">꿀팁</a>
+    </nav>
+    <a href="#contact" class="btn btn-ghost nav-cta">베타 신청</a>
+  </header>
+
+  <!-- Hero -->
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">SPLINE · PINTEREST · GOOGLE AI STUDIO</p>
+        <h1 class="hero-title">
+          <span>Gemini로 만드는</span>
+          <span class="grad-text">3D 인터랙티브</span>
+          <span>랜딩 페이지</span>
+        </h1>
+        <p class="hero-sub">
+          코딩 한 줄 없이도 마우스를 따라 움직이는 3D 히어로 섹션을 만들 수 있습니다.
+          단 세 가지 도구의 조합으로, 누구나 고퀄리티 랜딩 페이지를 완성하세요.
+        </p>
+        <div class="hero-cta">
+          <a href="#steps" class="btn btn-primary">제작 과정 보기</a>
+          <a href="#showcase" class="btn btn-ghost">레퍼런스 둘러보기</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>3</b><span>핵심 도구</span></div>
+          <div><b>4</b><span>실전 예시</span></div>
+          <div><b>0</b><span>줄의 코드</span></div>
+        </div>
+      </div>
+
+      <!-- Floating 3D-ish robot orb -->
+      <div class="hero-visual" id="heroVisual" aria-hidden="true">
+        <div class="orb" id="orb">
+          <div class="orb-face">OPTIMUS</div>
+          <div class="orb-ring"></div>
+          <div class="orb-ring ring-2"></div>
+          <div class="orb-core"></div>
+        </div>
+        <p class="orb-hint">마우스를 움직여 보세요 ↗</p>
+      </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="section" id="tools">
+      <div class="section-head">
+        <p class="eyebrow">THE TOOLKIT</p>
+        <h2>이 세 가지면 충분합니다</h2>
+        <p class="section-lead">각각의 도구가 하나의 역할을 맡습니다. 조합하는 순간 마법이 시작됩니다.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card-num">01</div>
+          <h3>Spline</h3>
+          <p class="card-tag">3D 디자인</p>
+          <p>브라우저에서 실시간으로 돌아가는 3D 디자인 도구. 커뮤니티 탭의 멋진 예시를 <b>리믹스</b>해 그대로 활용할 수 있습니다.</p>
+          <a class="card-link" href="https://spline.design" target="_blank" rel="noopener">spline.design →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card-num">02</div>
+          <h3>Pinterest</h3>
+          <p class="card-tag">레퍼런스 검색</p>
+          <p>원하는 스타일의 이미지를 타고 타며 탐색. 디자인 무드와 톤을 잡아가기에 최고의 레퍼런스 창고입니다.</p>
+          <a class="card-link" href="https://pinterest.com" target="_blank" rel="noopener">pinterest.com →</a>
+        </article>
+        <article class="card reveal">
+          <div class="card-num">03</div>
+          <h3>Google AI Studio</h3>
+          <p class="card-tag">Gemini · 빌드</p>
+          <p>Spline 임베드와 레퍼런스 이미지를 넣고 프롬프트만 하면, Gemini가 완성된 랜딩 페이지를 만들어 줍니다.</p>
+          <a class="card-link" href="https://aistudio.google.com" target="_blank" rel="noopener">aistudio.google.com →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="section" id="steps">
+      <div class="section-head">
+        <p class="eyebrow">STEP BY STEP</p>
+        <h2>4단계 제작 워크플로우</h2>
+        <p class="section-lead">Spline에서 가져오고, 레퍼런스를 더하고, Gemini로 빌드합니다.</p>
+      </div>
+      <ol class="timeline">
+        <li class="reveal">
+          <div class="t-dot">1</div>
+          <div class="t-body">
+            <h3>Spline에서 3D 리믹스 &amp; 임베드 복사</h3>
+            <p>커뮤니티 탭에서 마음에 드는 3D를 찾아 <b>Remix</b> → <b>Export</b> → <b>Public URL</b>의 <b>Copy iframe</b>(embed)을 복사합니다.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="t-dot">2</div>
+          <div class="t-body">
+            <h3>AI Studio Build 탭에 붙여넣기</h3>
+            <p>복사한 임베드 코드를 Google AI Studio의 Build 탭에 붙여넣어, 3D를 페이지의 재료로 준비합니다.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="t-dot">3</div>
+          <div class="t-body">
+            <h3>레퍼런스(맥락) 추가</h3>
+            <p>Mobbin · Pinterest · Framer 템플릿에서 풀페이지 디자인을 캡처해 함께 넣습니다. 맥락이 곧 퀄리티입니다.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <div class="t-dot">4</div>
+          <div class="t-body">
+            <h3>프롬프트로 빌드</h3>
+            <p>"이 Spline 3D와 이미지로 ◯◯ 웹사이트를 고급스럽게 만들어 줘." 빠른 결과는 <b>Flash</b>, 정교한 결과는 <b>Pro</b> 모델을 선택하세요.</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Prompt sample -->
+      <div class="prompt-box reveal">
+        <div class="prompt-head">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="prompt-title">Gemini Prompt</span>
+        </div>
+        <pre><code>내가 주는 Spline 3D와 이미지를 가지고
+테슬라 옵티머스 로봇 랜딩 페이지를 만들어 줘.
+디자인을 예쁘고 고급스러운 느낌이 들게 해 줘.</code></pre>
+      </div>
+    </section>
+
+    <!-- Showcase -->
+    <section class="section" id="showcase">
+      <div class="section-head">
+        <p class="eyebrow">REFERENCES</p>
+        <h2>영상 속 실전 예시 4가지</h2>
+        <p class="section-lead">하나의 워크플로우, 전혀 다른 네 가지 결과물.</p>
+      </div>
+      <div class="showcase-grid">
+        <article class="show-card reveal" style="--c:#7c5cff">
+          <span class="show-emoji">🤖</span>
+          <h3>테슬라 옵티머스</h3>
+          <p>시선을 따라 움직이는 로봇 히어로 섹션. 임팩트 있는 첫인상.</p>
+        </article>
+        <article class="show-card reveal" style="--c:#34d6c8">
+          <span class="show-emoji">🕶️</span>
+          <h3>Apple Vision OS</h3>
+          <p>줌인·줌아웃되는 몰입형 공간. 공간이 꽉 찬 이머시브 레이아웃.</p>
+        </article>
+        <article class="show-card reveal" style="--c:#ffb01f">
+          <span class="show-emoji">🪙</span>
+          <h3>Web3 · 크립토</h3>
+          <p>회전하는 3D 코인 로고. Framer 템플릿을 레퍼런스로 활용.</p>
+        </article>
+        <article class="show-card reveal" style="--c:#ff5d8f">
+          <span class="show-emoji">🧊</span>
+          <h3>네오브루탈리즘 팝</h3>
+          <p>소리 나는 인터랙티브 큐브. Pinterest 무드로 잡은 팝 스타일.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section" id="tips">
+      <div class="section-head">
+        <p class="eyebrow">PRO TIPS</p>
+        <h2>완성도를 높이는 꿀팁</h2>
+      </div>
+      <div class="tips">
+        <div class="tip reveal"><b>Annotate로 수정</b><span>고치고 싶은 부분을 체크·스케치한 뒤 Add to chat으로 정확하게 개선 요청.</span></div>
+        <div class="tip reveal"><b>이미지는 Nano Banana</b><span>커스터마이징된 고품질 이미지가 필요하면 이미지 생성으로 교체.</span></div>
+        <div class="tip reveal"><b>Flash vs Pro</b><span>빠른 중·고급은 Flash, 정교한 고퀄리티는 Pro. 상황에 맞게 선택.</span></div>
+        <div class="tip reveal"><b>워터마크</b><span>Spline 마크 제거는 유료. 레이아웃으로 가리는 방법도 있습니다.</span></div>
+      </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta-section" id="contact">
+      <div class="cta-inner reveal">
+        <h2>1인 웹 에이전시, 지금 시작하세요</h2>
+        <p>이 레퍼런스만으로도 임팩트 있는 포트폴리오와 수익화가 가능합니다.
+          랜딩 페이지 프로덕트 <b>Supernova</b> 클로즈 베타가 진행 중입니다.</p>
+        <form class="cta-form" onsubmit="return handleSubscribe(event)">
+          <input type="email" id="email" placeholder="이메일을 입력하면 베타 링크를 보내드려요" required />
+          <button class="btn btn-primary" type="submit">베타 신청</button>
+        </form>
+        <p class="cta-note" id="ctaNote"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand"><span class="brand-mark">◣</span> Builder<b>Josh</b></div>
+    <p>Gemini · Spline · Pinterest로 만드는 3D 웹. 좋아요와 구독 부탁드려요 ❤️</p>
+    <p class="footer-meta">대본 기반 데모 페이지 · Made with ❤️</p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
