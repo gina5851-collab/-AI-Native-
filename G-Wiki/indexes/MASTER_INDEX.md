@@ -2,7 +2,7 @@
 
 G-Wiki 전체 마스터 인덱스. 모든 탐색의 시작점.
 
-_최종 갱신: 2026-06-01 (초기 구조 생성)_
+_최종 갱신: 2026-06-01 (v0.2 — 무비지나 프로젝트·cases/ 폴더 추가)_
 
 ---
 
@@ -13,7 +13,8 @@ _최종 갱신: 2026-06-01 (초기 구조 생성)_
 | [`sources/`](../sources/) | 원본 자료 (불변) | 0 |
 | [`distillations/`](../distillations/) | 정제 요약본 | 0 |
 | [`entities/`](../entities/) | 엔티티 | 0 |
-| [`insights/`](../insights/) | 통찰 | 0 |
+| [`insights/`](../insights/) | 통찰 (Claim 포함) | 0 |
+| [`cases/`](../cases/) | 실제 사례 | 0 |
 | [`procedures/`](../procedures/) | 절차 | 0 |
 | [`projects/`](../projects/) | 프로젝트 히스토리 | 0 |
 | [`harness/`](../harness/) | 규칙·정책·검수 기준 | 1 |
@@ -36,9 +37,9 @@ _최종 갱신: 2026-06-01 (초기 구조 생성)_
 | --- | --- | --- |
 | Entity | `entities/` | 0 |
 | Insight | `insights/` | 0 |
+| Claim | `insights/` (`type: claim`) | 0 |
+| Case | `cases/` | 0 |
 | Procedure | `procedures/` | 0 |
-| Case | `projects/`, `insights/` | 0 |
-| Claim | 전체 | 0 |
 | Distillation | `distillations/` | 0 |
 
 ---

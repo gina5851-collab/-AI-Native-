@@ -65,3 +65,16 @@ Core Rule의 **"원본 절대 삭제·보존"** 과 Forbidden의 **"고객정보
 
 요약: **"원본 보존"은 G-Wiki 자산에 한정한다. 고객 PII는 처음부터 G-Wiki 자산이 아니다.**
 따라서 PII를 저장하지 않는 것은 원본 삭제가 아니라 *애초에 수집 대상에서 제외*하는 것이다.
+
+## 판단 자산화 규칙 (FAILURE_LOG / DECISION_LOG)
+
+GINAS_SECOND_BRAIN의 `FAILURE_LOG`·`DECISION_LOG`는 **"왜 실패/결정했는가"** 라는
+판단 과정을 담은 핵심 자산이다. 마이그레이션 시 아래 규칙으로 자산화한다.
+
+1. **원형 보존** — 로그 전체는 `sources/`에 append-only 원본으로 보존한다.
+2. **사례 분해(atomize)** — 로그의 개별 항목을 각각 1개의 `cases/` 문서로 분해한다.
+   - 실패 항목 → `case_type: failure`, 의사결정 항목 → `case_type: decision`
+3. **통찰 추출** — 각 사례에서 재사용 가능한 학습을 `insights/`로 추출하고
+   `Case --SUPPORTS--> Insight`, `Insight --CREATED_FROM--> Source` 로 연결한다.
+
+→ 결과가 아니라 **판단 과정**을 검색·재사용 가능한 그래프 노드로 만든다.

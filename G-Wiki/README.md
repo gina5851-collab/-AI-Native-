@@ -54,7 +54,8 @@ G-Wiki/
 ├─ sources/        원본 자료 (불변, 삭제 금지)
 ├─ distillations/  정제 요약본
 ├─ entities/       사람·브랜드·상품·프로젝트·채널·개념
-├─ insights/       통찰
+├─ insights/       통찰 (Claim 포함 — type으로 구분)
+├─ cases/          실제 사례 (실패·성공·결정·강의·팬덤·고객)
 ├─ procedures/     반복 가능한 절차
 ├─ projects/       프로젝트 히스토리
 ├─ harness/        규칙·정책·검수 기준
@@ -67,22 +68,40 @@ G-Wiki/
 
 ## Knowledge Types
 
-| 유형 | 설명 |
-| --- | --- |
-| Entity | 사람·브랜드·상품·프로젝트·채널·개념 |
-| Insight | 통찰 |
-| Procedure | 반복 가능한 절차 |
-| Case | 실제 사례 |
-| Claim | 주장 |
-| Distillation | 정제된 요약 |
+| 유형 | 설명 | 위치 |
+| --- | --- | --- |
+| Entity | 사람·브랜드·상품·프로젝트·채널·개념 | `entities/` |
+| Insight | 통찰 | `insights/` |
+| Claim | 주장 (Insight의 하위 형태 — `type: claim`으로 구분) | `insights/` |
+| Case | 실제 사례 (실패·성공·결정·강의·팬덤·고객) | `cases/` |
+| Procedure | 반복 가능한 절차 | `procedures/` |
+| Distillation | 정제된 요약 | `distillations/` |
 
 ---
 
 ## Ontology
 
-문서는 반드시 연결되어야 한다. 관계 없는 문서는 존재하면 안 된다.
+문서는 반드시 연결되어야 한다. 관계 없는 문서(고아 노드)는 존재하면 안 되며, Lint에서 결함으로 검출한다.
 
 관계 유형: `SUPPORTS` · `EXPANDS` · `REFUTES` · `SIMILAR_TO` · `PART_OF` · `CREATED_FROM` · `USED_BY` · `DEPENDS_ON`
+
+### 표준 관계 패턴
+
+| 관계 | 표준 용법 |
+| --- | --- |
+| `CREATED_FROM` | distillation/case/insight → source (추적 필수) |
+| `SUPPORTS` | case → insight, insight → claim (근거 연결) |
+| `REFUTES` | 반례 case → insight (폐기 대신 연결) |
+| `PART_OF` | AI강의 → BrandG, 하위 엔티티 → 상위 |
+| `DEPENDS_ON` | 팬덤굿즈 → 무비지나, procedure → procedure |
+| `USED_BY` | entity/procedure → project |
+| `EXPANDS` | 심화 문서 → 기본 문서 |
+| `SIMILAR_TO` | 중복/유사 후보 연결 |
+
+### 양방향성
+
+- `relations:` frontmatter에는 정방향만 기록한다.
+- Lint가 역링크(backlink) 무결성과 고아 노드를 검사한다.
 
 ---
 
@@ -96,14 +115,15 @@ G-Wiki/
 
 ## Active Projects
 
-| 코드 | 프로젝트 | 영역 |
-| --- | --- | --- |
-| 운명PT | 운명PT | AI 자기이해 리포트 |
-| BrandG | BrandG | AI 교육 및 퍼스널 브랜딩 |
-| 지나스뷰티 | 지나스뷰티 | 4050 여성 뷰티 |
-| 팬덤굿즈 | 팬덤굿즈 | 미니 인형 사업 |
-| AI강의 | AI강의 | 공공기관 강의 |
-| 보안운영 | 보안운영 | 공개/비공개 기준 |
+| # | 코드 | 영역 | 관계 |
+| --- | --- | --- | --- |
+| 1 | 운명PT | AI 자기이해 리포트 | — |
+| 2 | BrandG | AI 교육 및 퍼스널 브랜딩 | — |
+| 3 | 지나스뷰티 | 4050 여성 뷰티 | — |
+| 4 | 무비지나 | 영상·서사 콘텐츠 (TV/영화·팬덤) | SUPPORTS → 팬덤굿즈 |
+| 5 | 팬덤굿즈 | 미니 인형 사업 | DEPENDS_ON → 무비지나 |
+| 6 | AI강의 | 공공기관·소상공인 강의 | PART_OF → BrandG |
+| 7 | 보안운영 | 공개/비공개 기준 | USED_BY → 전 프로젝트 |
 
 자세한 내용은 [`indexes/PROJECT_INDEX.md`](indexes/PROJECT_INDEX.md) 참고.
 
