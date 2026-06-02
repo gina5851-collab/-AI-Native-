@@ -7,14 +7,21 @@
 
 ## 사례 유형 (case_type)
 
-| case_type | 설명 |
-| --- | --- |
-| failure | 실패·시행착오 (← FAILURE_LOG 자산화) |
-| success | 성공 사례 |
-| decision | 의사결정 (← DECISION_LOG 자산화) |
-| lecture | 강의 사례 (AI강의) |
-| fandom | 팬덤 사례 (무비지나·팬덤굿즈) |
-| customer | 고객 사례 (비식별 필수) |
+| case_type | 저장 위치 | 설명 |
+| --- | --- | --- |
+| success | `cases/success/` | 성공 사례 — "왜 떴는가" |
+| failure | `cases/failure/` | 실패·시행착오 — "왜 망했는가" (← FAILURE_LOG 자산화) |
+| decision | `cases/decision/` | 의사결정 — "왜 결정했는가" (← DECISION_LOG 자산화) |
+| lecture | `cases/` (메타) | 강의 사례 (AI강의) — `case_type`으로만 구분 |
+| fandom | `cases/` (메타) | 팬덤 사례 (무비지나·팬덤굿즈) — `case_type`으로만 구분 |
+| customer | `cases/` (메타) | 고객 사례 (비식별 필수) — `case_type`으로만 구분 |
+
+### 분류 구조 (v0.4+)
+
+- **success / failure / decision** → 물리 하위폴더로 분리한다. (지나스 자산의 핵심 = "왜")
+  - `cases/success/` · `cases/failure/` · `cases/decision/`
+- **lecture / fandom / customer** → 전용 폴더 없이 `cases/` 루트에 두고 `case_type` 메타로 구분한다.
+  (양이 누적되면 추후 하위폴더로 승격 검토)
 
 ## 규칙
 

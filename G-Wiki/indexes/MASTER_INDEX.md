@@ -2,7 +2,7 @@
 
 G-Wiki 전체 마스터 인덱스. 모든 탐색의 시작점.
 
-_최종 갱신: 2026-06-02 (v0.4 — MG-04 무비지나 파일럿 Ingest)_
+_최종 갱신: 2026-06-02 (v0.4.1 — cases/ 3분류 하위폴더 구축)_
 
 ---
 
@@ -14,7 +14,10 @@ _최종 갱신: 2026-06-02 (v0.4 — MG-04 무비지나 파일럿 Ingest)_
 | [`distillations/`](../distillations/) | 정제 요약본 | 1 |
 | [`entities/`](../entities/) | 엔티티 | 1 |
 | [`insights/`](../insights/) | 통찰 (Claim 포함) | 1 |
-| [`cases/`](../cases/) | 실제 사례 | 0 |
+| [`cases/`](../cases/) | 실제 사례 (success/failure/decision 하위분류) | 0 |
+| [`cases/success/`](../cases/success/) | 성공 사례 — 왜 떴는가 | 0 |
+| [`cases/failure/`](../cases/failure/) | 실패 사례 — 왜 망했는가 | 0 |
+| [`cases/decision/`](../cases/decision/) | 의사결정 — 왜 결정했는가 | 0 |
 | [`procedures/`](../procedures/) | 절차 | 1 |
 | [`projects/`](../projects/) | 프로젝트 히스토리 | 0 |
 | [`harness/`](../harness/) | 규칙·정책·검수 기준 | 1 |
