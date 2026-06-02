@@ -2,7 +2,7 @@
 
 G-Wiki 전체 마스터 인덱스. 모든 탐색의 시작점.
 
-_최종 갱신: 2026-06-01 (v0.2 — 무비지나 프로젝트·cases/ 폴더 추가)_
+_최종 갱신: 2026-06-02 (v0.4 — MG-04 무비지나 파일럿 Ingest)_
 
 ---
 
@@ -10,15 +10,15 @@ _최종 갱신: 2026-06-01 (v0.2 — 무비지나 프로젝트·cases/ 폴더 �
 
 | 폴더 | 목적 | 문서 수 |
 | --- | --- | --- |
-| [`sources/`](../sources/) | 원본 자료 (불변) | 0 |
-| [`distillations/`](../distillations/) | 정제 요약본 | 0 |
-| [`entities/`](../entities/) | 엔티티 | 0 |
-| [`insights/`](../insights/) | 통찰 (Claim 포함) | 0 |
+| [`sources/`](../sources/) | 원본 자료 (불변) | 1 |
+| [`distillations/`](../distillations/) | 정제 요약본 | 1 |
+| [`entities/`](../entities/) | 엔티티 | 1 |
+| [`insights/`](../insights/) | 통찰 (Claim 포함) | 1 |
 | [`cases/`](../cases/) | 실제 사례 | 0 |
-| [`procedures/`](../procedures/) | 절차 | 0 |
+| [`procedures/`](../procedures/) | 절차 | 1 |
 | [`projects/`](../projects/) | 프로젝트 히스토리 | 0 |
 | [`harness/`](../harness/) | 규칙·정책·검수 기준 | 1 |
-| [`agents/`](../agents/) | 에이전트 정의 | 1 |
+| [`agents/`](../agents/) | 에이전트 정의 | 6 |
 | [`indexes/`](.) | 인덱스 | 3 |
 | [`logs/`](../logs/) | 로그 | 3 |
 
@@ -35,12 +35,13 @@ _최종 갱신: 2026-06-01 (v0.2 — 무비지나 프로젝트·cases/ 폴더 �
 
 | Type | 위치 | 등록 수 |
 | --- | --- | --- |
-| Entity | `entities/` | 0 |
-| Insight | `insights/` | 0 |
+| Source | `sources/` | 1 |
+| Entity | `entities/` | 1 |
+| Insight | `insights/` | 1 |
 | Claim | `insights/` (`type: claim`) | 0 |
 | Case | `cases/` | 0 |
-| Procedure | `procedures/` | 0 |
-| Distillation | `distillations/` | 0 |
+| Procedure | `procedures/` | 1 |
+| Distillation | `distillations/` | 1 |
 
 ---
 
